@@ -11,7 +11,7 @@ import java.util.Vector;
 
 public class Servidor extends Thread{
 	
-	private static Vector clientes;
+	private static Vector<PrintStream> clientes;
 	private Socket conexao;
 	private String meuNome;
 	
@@ -20,8 +20,9 @@ public class Servidor extends Thread{
 	}
 		
 	public static void main(String[] args) throws IOException {
-		clientes = new Vector();
+		clientes = new Vector<PrintStream>();
 		
+		@SuppressWarnings("resource")
 		ServerSocket s = new ServerSocket(2000);
 		while(true) {
 			System.out.println("Esperando conectar ... ");
@@ -60,7 +61,7 @@ public class Servidor extends Thread{
 	}
 
 	private void sendToAll(PrintStream saida, String acao, String linha) {
-		Enumeration e = clientes.elements();
+		Enumeration<PrintStream> e = clientes.elements();
 		while(e.hasMoreElements()) {
 			PrintStream chat = (PrintStream) e.nextElement();
 			if(chat != saida) {

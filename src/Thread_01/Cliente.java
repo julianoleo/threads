@@ -54,7 +54,6 @@ public class Cliente extends Thread{
 			}
 			done = true;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
