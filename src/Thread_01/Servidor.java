@@ -49,14 +49,13 @@ public class Servidor extends Thread{
 			while((linha != null) && (!linha.trim().equals(""))) {
 				sendToAll(saida, " disse: ", linha);
 				linha = entrada.readLine();
-			}
-			
+			}			
 			sendToAll(saida," saiu "," do chat!");
 			clientes.remove(saida);
 			conexao.close();
-				
+
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("");
 		}
 	}
 
